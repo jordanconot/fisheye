@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const main = document.getElementById('main_photographer');
 const modal = document.getElementById('modal');
 
@@ -48,7 +49,7 @@ function closeModal() {
 }
 // Pour la touche échap du clavier
 modal.addEventListener('keydown', (e) => {
-  if (e.code == 'Escape') {
+  if (e.code === 'Escape') {
     e.preventDefault();
     modal.close();
     main.classList.remove('main_photographer');
