@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Factory for Home page
 function photographerFactory(data) {
   const {
