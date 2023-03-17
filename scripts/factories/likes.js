@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
 // Fonction pour gérer les likes avec une boucle sur tous les boutons,
 // on gére l'événement au click en controlant si les boutons
 // sont par défault en data-incrément 'false' on incrémente
@@ -9,7 +11,7 @@ function incrementLikes() {
   const likesCountsLength = likeCounts.length;
   const likeTotal = document.querySelector('.photographer_nav_like_total');
 
-  for (let i = 0; i < likesCountsLength; i++ ) {
+  for (let i = 0; i < likesCountsLength; i++) {
     likeButtons[i].addEventListener('click', () => {
       if (likeButtons[i].getAttribute('data-increment') === 'false') {
         likeCounts[i].textContent++;
