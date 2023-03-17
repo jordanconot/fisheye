@@ -1,7 +1,6 @@
 const dropDown = document.querySelector('.dropdown');
 const headerDropDown = document.querySelector('.header_dropdown');
 const arrow = document.querySelector('.arrow');
-const arrowClose = document.querySelector('.arrow-close');
 let focusablesItem = [];
 focusablesItem = Array.from(dropDown.querySelectorAll('li'));
 
@@ -22,16 +21,6 @@ function closeDropDown() {
 headerDropDown.addEventListener('click', openDropDown);
 dropDown.addEventListener('click', closeDropDown);
 
-// Tabuler uniquement dans le menu
-dropDown.addEventListener('keydown', (e) => {
-  if (e.key === 'Tab') {
-    focusTab(e, focusablesItem);
-  }
-  // Fermeture menu si choix effectuer avec la touche 'Enter'
-  if (e.key === 'Enter') {
-    closeDropDown();
-  }
-});
 // Fermer menu au click en dehors du menu
 document.addEventListener('click', (e) => {
   if (!document.querySelector('.dropdown_container').contains(e.target)) {
@@ -51,8 +40,10 @@ function focusTab(e, focusables) {
   let index = focusables.findIndex((searchFocus) => searchFocus === document.querySelector(':focus'));
   // Décrémentation de l'index à la touche shift
   if (e.shiftKey) {
+    // eslint-disable-next-line no-plusplus
     index--;
   } else {
+    // eslint-disable-next-line no-plusplus
     index++; // incrémentation
   }
   // Si index supérieur à la longueur du tableau, on revient au début
@@ -66,9 +57,19 @@ function focusTab(e, focusables) {
   focusables[index].focus();
 }
 
+// Tabuler uniquement dans le menu
+dropDown.addEventListener('keydown', (e) => {
+  if (e.key === 'Tab') {
+    focusTab(e, focusablesItem);
+  }
+  // Fermeture menu si choix effectuer avec la touche 'Enter'
+  if (e.key === 'Enter') {
+    closeDropDown();
+  }
+});
+
 // Trie des medias
 function sort(media) {
-  const dropDown = document.querySelector('.dropdown');
   const headerDropdown = document.querySelector('.header_dropdown');
   let valueSort = 'popularity';
   typeSort(valueSort);

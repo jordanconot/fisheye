@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-vars */
 function displayLightBox(data, clickedIndex) {
   let index = clickedIndex;
   const lightBox = document.querySelector('.lightbox');
@@ -18,7 +20,7 @@ function displayLightBox(data, clickedIndex) {
                  </button>
                     <div class='lightbox_img' role='dialog' aria-label="Image ouverte en vue rapprochée">
                         <div class='lightbox_img_container'>`;
-  if (video != undefined) {
+  if (video !== undefined) {
     lightBoxElement += `
             <img style='display : none;' class='lightbox_img_container_img' tabindex='0' src="./assets/images/${photographerId}/${image}" alt='photogaphie nommée ${title}'/>
             <video controls class='photographer_media_video'><source src="./assets/images/${photographerId}/${video}" type="video/mp4"></video>`;
@@ -46,18 +48,18 @@ function displayLightBox(data, clickedIndex) {
     if (index >= data.length) {
       index = 0;
     }
-    if (data[index].video != undefined) {
-      const video = document.querySelector('.photographer_media_video');
+    if (data[index].video !== undefined) {
+      const videoInLigthbox = document.querySelector('.photographer_media_video');
       const img = document.querySelector('.lightbox_img_container_img');
-      video.setAttribute('src', `./assets/images/${photographerId}/${data[index].video}`);
+      videoInLigthbox.setAttribute('src', `./assets/images/${photographerId}/${data[index].video}`);
       img.style.display = 'none';
-      video.style.display = 'block';
+      videoInLigthbox.style.display = 'block';
     } else {
-      const video = document.querySelector('.photographer_media_video');
+      const videoInLigthbox = document.querySelector('.photographer_media_video');
       const img = document.querySelector('.lightbox_img_container_img');
       img.setAttribute('src', `./assets/images/${photographerId}/${data[index].image}`);
       img.setAttribute('alt', `${data[index].title}`);
-      video.style.display = 'none';
+      videoInLigthbox.style.display = 'none';
       img.style.display = 'block';
     }
     const titleImg = document.querySelector('.lightbox_description');
@@ -71,18 +73,18 @@ function displayLightBox(data, clickedIndex) {
     if (index < 0) {
       index = data.length - 1;
     }
-    if (data[index].video != undefined) {
-      const video = document.querySelector('.photographer_media_video');
+    if (data[index].video !== undefined) {
+      const videoInLigthbox = document.querySelector('.photographer_media_video');
       const img = document.querySelector('.lightbox_img_container_img');
-      video.setAttribute('src', `./assets/images/${photographerId}/${data[index].video}`);
+      videoInLigthbox.setAttribute('src', `./assets/images/${photographerId}/${data[index].video}`);
       img.style.display = 'none';
       video.style.display = 'block';
     } else {
-      const video = document.querySelector('.photographer_media_video');
+      const videoInLigthbox = document.querySelector('.photographer_media_video');
       const img = document.querySelector('.lightbox_img_container_img');
       img.setAttribute('src', `./assets/images/${photographerId}/${data[index].image}`);
       img.setAttribute('alt', `${data[index].title}`);
-      video.style.display = 'none';
+      videoInLigthbox.style.display = 'none';
       img.style.display = 'block';
     }
     const titleImg = document.querySelector('.lightbox_description');
@@ -125,7 +127,7 @@ function closeLightBox() {
 const mainOpacity = document.getElementById('main_photographer');
 const lightBox = document.querySelector('.lightbox');
 lightBox.addEventListener('keydown', (e) => {
-  if (e.code == 'Escape') {
+  if (e.code === 'Escape') {
     lightBox.close();
     mainOpacity.classList.remove('main_photographer');
   }
