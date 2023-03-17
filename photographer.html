@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Plateforme de photographe, découvrez nos photographes professionnels" />
+        <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link rel="icon" type="image/png" href="assets/favicon.png" />
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet" />
+        <title>Fisheye - photographe</title>
+        <script src="https://kit.fontawesome.com/ba64d1ea0b.js" crossorigin="anonymous"></script>
+    </head>
+    <body id="photographer_body">
+        <header id="header" class="header" role="banner" aria-label="En tête de la page">
+            <a href="index.html" class="header_link" role="link">
+                <img src="assets/images/logo.png" class="logo" alt="Logo de bannière Fisheye en toute lettre" />
+            </a>
+        </header>
+        <main
+            id="main_photographer"
+            role="main"
+            aria-label="Contenu de la page principale de la page photographe"
+            aria-hidden="false"
+        >
+            <section class="photograph_header"></section>
+            <div class="select">
+                <div class="text_label">Trier par</div>
+                <div class="dropdown_container">
+                    <button class="header_dropdown" tabindex="0" aria-label="Choix du tri">Popularité</button>
+                    <ul class="dropdown">
+                        <li class="item popularity" tabindex="0">Popularité</li>
+                        <li class="item date" tabindex="0">Date</li>
+                        <li class="item title" tabindex="0">Titre</li>
+                    </ul>
+                    <em class="fas fa-chevron-down arrow arrow-close"></em>
+                </div>
+            </div>
+            <section class="photographer_media" aria-label="Publication faites par le photographe"></section>
+            <aside class="photographer_nav_container"></aside>
+        </main>
+        <dialog class="lightbox" aria-label="Vue rapprochée de l'image" role="dialog"></dialog>
+        <dialog id="modal" class="modal" aria-labelledby="modal" role="dialog"></dialog>
+
+        <script src="/scripts/pages/photographer.js"></script>
+        <script src="/scripts/factories/photographer.js"></script>
+        <script src="/scripts/utils/lightbox.js"></script>
+        <script src="/scripts/utils/contactForm.js"></script>
+        <script src="/scripts/factories/likes.js"></script>
+        <script src="/scripts/utils/sorter.js"></script>
+    </body>
+</html>

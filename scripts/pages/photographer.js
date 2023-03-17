@@ -1,0 +1,192 @@
+const url = window.location.search;
+const nphotographerId = url.slice(1);
+
+async function getPhotographer() {
+    // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
+    const photographerAPI = await fetch('./data/photographers.json')
+        .then((res) => res.json())
+        .then(function (res) {
+            let photographers = res.photographers;
+            let media = res.media;
+            // et bien retourner le tableau photographers seulement une fois récupéré
+            return { photographers, media };
+        })
+        .catch((err) => console.log('error:', err));
+    return photographerAPI;
+}
+
+async function displayPhotographer(medias, photographers) {
+    //Header photographer
+    const photographerHeader = document.querySelector('.photograph_header');
+
+    const photographerId = photographers.find(function (findIdPhotographer) {
+        return findIdPhotographer.id == nphotographerId;
+    });
+
+    const photographerModelHeader = photographerFactory(photographerId);
+
+    const photographerPortrait = photographerModelHeader.getPhotographerHeader();
+    photographerHeader.appendChild(photographerPortrait);
+
+    // ----------------------------Open modal onclick and control fields-----------------------------------
+
+    const btnContact = document.querySelector('.btn');
+    // const main = document.getElementById('main_photographer');
+
+    btnContact.addEventListener('click', () => {
+        displayModal(photographerId);
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+
+        firstName.addEventListener('change', function () {
+            isValideFirstName();
+        });
+
+        lastName.addEventListener('change', function () {
+            isValideLastName();
+        });
+
+        email.addEventListener('change', function () {
+            isValideEmail();
+        });
+
+        const btnSubmit = document.querySelector('.btn_modal');
+        btnSubmit.addEventListener('click', (e) => {
+            e.preventDefault();
+            submitForm();
+        });
+        const btnSubmitKey = document.querySelector('.btn_modal');
+        btnSubmitKey.addEventListener('keydown', (e) => {
+            let code = e.which || e.keyCode;
+            if (code == 13) {
+                e.preventDefault();
+                submitForm();
+            }
+        });
+
+        function submitForm() {
+            if (isValideFirstName() && isValideLastName() && isValideEmail()) {
+                console.log('firstName: ', firstName.value);
+                console.log('lastName: ', lastName.value);
+                console.log('email: ', email.value);
+                console.log('message :', message.value);
+
+                //Pour la soumission du formulaire sur la touche Enter
+                const btnSubmiteKeyEnter = document.querySelector('.btn_modal');
+                const main = document.getElementById('main_photographer');
+                btnSubmiteKeyEnter.addEventListener('keydown', (e) => {
+                    if (e.code == 'Enter') {
+                        e.preventDefault();
+                        modal.close();
+                        main.classList.remove('main_photographer');
+                        modal.setAttribute('aria-hidden', true);
+                        main.setAttribute('aria-hidden', false);
+                        modal.setAttribute('aria-modal', false);
+                    }
+                });
+
+                const modal = document.getElementById('modal');
+                modal.close();
+                main.classList.remove('main_photographer');
+                main.setAttribute('aria-hidden', false);
+            }
+        }
+
+        // Check the first name field with a regex and add an error
+        function isValideFirstName() {
+            const firstRegex = new RegExp(/^[a-zA-Z \-]{2,20}$/);
+            const errorFirstName = document.getElementById('errorFirstName');
+            const firstName = document.getElementById('firstName');
+
+            if (firstRegex.test(firstName.value) == false) {
+                errorFirstName.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
+                errorFirstName.style.color = '#ffe7e1';
+                firstName.setAttribute('aria-invalid', 'true');
+                return false;
+            } else {
+                errorFirstName.textContent = '';
+                firstName.setAttribute('aria-invalid', 'false');
+                return true;
+            }
+        }
+
+        // Check the last name field with a regex and add an error
+        function isValideLastName() {
+            const lastRegex = new RegExp(/^[a-zA-Z \-]{2,20}$/);
+            const errorLastName = document.getElementById('errorLastName');
+            const lastName = document.getElementById('lastName');
+
+            if (lastRegex.test(lastName.value) == false) {
+                errorLastName.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom';
+                errorLastName.style.color = '#ffe7e1';
+                lastName.setAttribute('aria-invalid', 'true');
+                return false;
+            } else {
+                errorLastName.textContent = '';
+                lastName.setAttribute('aria-invalid', 'false');
+                return true;
+            }
+        }
+
+        // Check the email field with a regex and add an error
+        function isValideEmail() {
+            const email = document.getElementById('email');
+            const errorEmail = document.getElementById('errorEmail');
+            const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,20}$/);
+
+            if (emailRegex.test(email.value) === false) {
+                errorEmail.textContent = 'Format incorrect';
+                errorEmail.style.color = '#ffe7e1';
+                email.setAttribute('aria-invalid', 'true');
+                return false;
+            } else {
+                errorEmail.textContent = '';
+                email.setAttribute('aria-invalid', 'false');
+                return true;
+            }
+        }
+    });
+    // -------------------------------------------END MODAL------------------------------------------------------------
+
+    //Photos photographer
+    const photographerMediaArticle = medias.filter(function (findMedia) {
+        return findMedia.photographerId == nphotographerId;
+    });
+
+    const photographersMediaContainer = document.querySelector('.photographer_media');
+
+    photographerMediaArticle.forEach(function (e) {
+        const photographerMediasContainerModel = mediaFactory(e);
+
+        const PhotographerMediaContainerUser = photographerMediasContainerModel.getMediaFactory();
+
+        photographersMediaContainer.appendChild(PhotographerMediaContainerUser);
+    });
+
+    //-------------------------------------------LIKES--------------------------------------------------------------------
+
+    const photographerLikeAndPrice = document.querySelector('.photographer_nav_container');
+    let like = 0;
+
+    photographerMediaArticle.forEach(function (media) {
+        like += media.likes;
+    });
+
+    const photographerLikeAndPriceModel = likeAndPriceFactory({
+        price: photographerId.price,
+        likes: like,
+    });
+    const photographerLikeAndPriceDisplay = photographerLikeAndPriceModel.getLikeAndPriceFactory();
+    photographerLikeAndPrice.appendChild(photographerLikeAndPriceDisplay);
+}
+
+async function init() {
+    // Récupère les datas des photographes
+    const { photographers, media } = await getPhotographer();
+    displayPhotographer(media, photographers);
+    sort(media);
+    incrementLikes();
+}
+init();
