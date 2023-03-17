@@ -3,13 +3,13 @@
 // et si c'est sur 'true', on décrémente et on les repasse sur 'false'
 function incrementLikes() {
     const likeButtons = document.querySelectorAll('.photographer_article_like_icon');
+    console.log(likeButtons);
     const likeCounts = document.querySelectorAll('.likes');
     const likesCountsLength = likeCounts.length;
     const likeTotal = document.querySelector('.photographer_nav_like_total');
 
     for (let i = 0; i < likesCountsLength; i++) {
         likeButtons[i].addEventListener('click', () => {
-            console.log(likeButtons);
             if (likeButtons[i].getAttribute('data-increment') === 'false') {
                 likeCounts[i].textContent++;
                 likeCounts[i].style.color = '#DB8876';

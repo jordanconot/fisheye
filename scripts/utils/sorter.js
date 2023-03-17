@@ -153,5 +153,6 @@ function sort(media) {
                 }
             });
         });
+        incrementLikes();
     }
 }

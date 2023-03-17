@@ -186,7 +186,7 @@ async function init() {
     // Récupère les datas des photographes
     const { photographers, media } = await getPhotographer();
     displayPhotographer(media, photographers);
-    sort(media);
     incrementLikes();
+    sort(media);
 }
 init();
