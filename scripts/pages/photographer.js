@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-console */
 const url = window.location.search;
 const nphotographerId = url.slice(1);
 
@@ -29,7 +32,6 @@ async function displayPhotographer(medias, photographers) {
   // ----------------------------Open modal onclick and control fields-----------------------------------
 
   const btnContact = document.querySelector('.btn');
-  // const main = document.getElementById('main_photographer');
 
   btnContact.addEventListener('click', () => {
     displayModal(photographerId);
@@ -37,6 +39,49 @@ async function displayPhotographer(medias, photographers) {
     const lastName = document.getElementById('lastName');
     const email = document.getElementById('email');
     const message = document.getElementById('message');
+
+    // Check the first name field with a regex and add an error
+    function isValideFirstName() {
+      const firstRegex = /^[a-zA-Z -]{2,20}$/;
+      const errorFirstName = document.getElementById('errorFirstName');
+      if (firstRegex.test(firstName.value) === false) {
+        errorFirstName.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
+        errorFirstName.style.color = '#ffe7e1';
+        firstName.setAttribute('aria-invalid', 'true');
+        return false;
+      }
+      errorFirstName.textContent = '';
+      firstName.setAttribute('aria-invalid', 'false');
+      return true;
+    }
+    // Check the last name field with a regex and add an error
+    function isValideLastName() {
+      const lastRegex = /^[a-zA-Z -]{2,20}$/;
+      const errorLastName = document.getElementById('errorLastName');
+      if (lastRegex.test(lastName.value) === false) {
+        errorLastName.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom';
+        errorLastName.style.color = '#ffe7e1';
+        lastName.setAttribute('aria-invalid', 'true');
+        return false;
+      }
+      errorLastName.textContent = '';
+      lastName.setAttribute('aria-invalid', 'false');
+      return true;
+    }
+    // Check the email field with a regex and add an error
+    function isValideEmail() {
+      const errorEmail = document.getElementById('errorEmail');
+      const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,20}$/;
+      if (emailRegex.test(email.value) === false) {
+        errorEmail.textContent = 'Format incorrect';
+        errorEmail.style.color = '#ffe7e1';
+        email.setAttribute('aria-invalid', 'true');
+        return false;
+      }
+      errorEmail.textContent = '';
+      email.setAttribute('aria-invalid', 'false');
+      return true;
+    }
 
     firstName.addEventListener('change', () => {
       isValideFirstName();
@@ -49,21 +94,6 @@ async function displayPhotographer(medias, photographers) {
     email.addEventListener('change', () => {
       isValideEmail();
     });
-
-    const btnSubmit = document.querySelector('.btn_modal');
-    btnSubmit.addEventListener('click', (e) => {
-      e.preventDefault();
-      submitForm();
-    });
-    const btnSubmitKey = document.querySelector('.btn_modal');
-    btnSubmitKey.addEventListener('keydown', (e) => {
-      const code = e.which || e.keyCode;
-      if (code == 13) {
-        e.preventDefault();
-        submitForm();
-      }
-    });
-
     function submitForm() {
       if (isValideFirstName() && isValideLastName() && isValideEmail()) {
         console.log('firstName: ', firstName.value);
@@ -74,6 +104,7 @@ async function displayPhotographer(medias, photographers) {
         // Pour la soumission du formulaire sur la touche Enter
         const btnSubmiteKeyEnter = document.querySelector('.btn_modal');
         const main = document.getElementById('main_photographer');
+        const modal = document.getElementById('modal');
         btnSubmiteKeyEnter.addEventListener('keydown', (e) => {
           if (e.code == 'Enter') {
             e.preventDefault();
@@ -85,63 +116,24 @@ async function displayPhotographer(medias, photographers) {
           }
         });
 
-        const modal = document.getElementById('modal');
         modal.close();
         main.classList.remove('main_photographer');
         main.setAttribute('aria-hidden', false);
       }
     }
-
-    // Check the first name field with a regex and add an error
-    function isValideFirstName() {
-      const firstRegex = new RegExp(/^[a-zA-Z \-]{2,20}$/);
-      const errorFirstName = document.getElementById('errorFirstName');
-      const firstName = document.getElementById('firstName');
-
-      if (firstRegex.test(firstName.value) == false) {
-        errorFirstName.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
-        errorFirstName.style.color = '#ffe7e1';
-        firstName.setAttribute('aria-invalid', 'true');
-        return false;
+    const btnSubmit = document.querySelector('.btn_modal');
+    btnSubmit.addEventListener('click', (e) => {
+      e.preventDefault();
+      submitForm();
+    });
+    const btnSubmitKey = document.querySelector('.btn_modal');
+    btnSubmitKey.addEventListener('keydown', (e) => {
+      const code = e.which || e.keyCode;
+      if (code === 13) {
+        e.preventDefault();
+        submitForm();
       }
-      errorFirstName.textContent = '';
-      firstName.setAttribute('aria-invalid', 'false');
-      return true;
-    }
-
-    // Check the last name field with a regex and add an error
-    function isValideLastName() {
-      const lastRegex = new RegExp(/^[a-zA-Z \-]{2,20}$/);
-      const errorLastName = document.getElementById('errorLastName');
-      const lastName = document.getElementById('lastName');
-
-      if (lastRegex.test(lastName.value) == false) {
-        errorLastName.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom';
-        errorLastName.style.color = '#ffe7e1';
-        lastName.setAttribute('aria-invalid', 'true');
-        return false;
-      }
-      errorLastName.textContent = '';
-      lastName.setAttribute('aria-invalid', 'false');
-      return true;
-    }
-
-    // Check the email field with a regex and add an error
-    function isValideEmail() {
-      const email = document.getElementById('email');
-      const errorEmail = document.getElementById('errorEmail');
-      const emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,20}$/);
-
-      if (emailRegex.test(email.value) === false) {
-        errorEmail.textContent = 'Format incorrect';
-        errorEmail.style.color = '#ffe7e1';
-        email.setAttribute('aria-invalid', 'true');
-        return false;
-      }
-      errorEmail.textContent = '';
-      email.setAttribute('aria-invalid', 'false');
-      return true;
-    }
+    });
   });
   // -------------------------------------------END MODAL------------------------------------------------------------
 

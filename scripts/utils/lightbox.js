@@ -78,7 +78,7 @@ function displayLightBox(data, clickedIndex) {
       const img = document.querySelector('.lightbox_img_container_img');
       videoInLigthbox.setAttribute('src', `./assets/images/${photographerId}/${data[index].video}`);
       img.style.display = 'none';
-      video.style.display = 'block';
+      videoInLigthbox.style.display = 'block';
     } else {
       const videoInLigthbox = document.querySelector('.photographer_media_video');
       const img = document.querySelector('.lightbox_img_container_img');
