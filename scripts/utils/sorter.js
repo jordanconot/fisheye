@@ -1,3 +1,6 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 const dropDown = document.querySelector('.dropdown');
 const headerDropDown = document.querySelector('.header_dropdown');
 const arrow = document.querySelector('.arrow');
@@ -72,34 +75,6 @@ dropDown.addEventListener('keydown', (e) => {
 function sort(media) {
   const headerDropdown = document.querySelector('.header_dropdown');
   let valueSort = 'popularity';
-  typeSort(valueSort);
-
-  // Au click Récupération de la valeur du type de tri
-  dropDown.addEventListener('click', (e) => {
-    recoveryValue(e);
-  });
-  // Récupération de la valeur du type de tri avec la touche 'Enter'
-  dropDown.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      recoveryValue(e);
-    }
-  });
-  // Récupération de la valeur du type de tri
-  function recoveryValue(e) {
-    if (e.target.className.includes('popularity')) {
-      headerDropdown.innerHTML = 'Popularité';
-      valueSort = 'popularity';
-    }
-    if (e.target.className.includes('date')) {
-      headerDropdown.innerHTML = 'Date';
-      valueSort = 'date';
-    }
-    if (e.target.className.includes('title')) {
-      headerDropdown.innerHTML = 'Titre';
-      valueSort = 'title';
-    }
-    typeSort(valueSort); // Lancement de la fonction de tri avec la valeur du type de tri
-  }
 
   // Tri avec la valeur du type de tri récupérée
   function typeSort(value) {
@@ -116,8 +91,8 @@ function sort(media) {
     }
     // Effacement de la galerie avant le nouvel affichage
     const removeMedias = Array.from(document.querySelector('.photographer_media').children);
-    removeMedias.forEach((photographerMediaArticle) => {
-      photographerMediaArticle.remove();
+    removeMedias.forEach((item) => {
+      item.remove();
     });
     // Affichage de la galerie suivant le type de tri sélectioné
     const photographersMediaContainer = document.querySelector('.photographer_media');
@@ -140,7 +115,7 @@ function sort(media) {
     Array.from(photographerImgKey).forEach((item) => {
       item.addEventListener('keydown', (e) => {
         const code = e.which || e.keyCode;
-        if (code == 13) {
+        if (code === 13) {
           const clickedIndex = Array.from(photographerImg).indexOf(e.target);
           displayLightBox(photographerMediaArticle, clickedIndex);
         }
@@ -148,4 +123,31 @@ function sort(media) {
     });
     incrementLikes();
   }
+  typeSort(valueSort);
+  // Récupération de la valeur du type de tri
+  function recoveryValue(e) {
+    if (e.target.className.includes('popularity')) {
+      headerDropdown.innerHTML = 'Popularité';
+      valueSort = 'popularity';
+    }
+    if (e.target.className.includes('date')) {
+      headerDropdown.innerHTML = 'Date';
+      valueSort = 'date';
+    }
+    if (e.target.className.includes('title')) {
+      headerDropdown.innerHTML = 'Titre';
+      valueSort = 'title';
+    }
+    typeSort(valueSort); // Lancement de la fonction de tri avec la valeur du type de tri
+  }
+  // Au click Récupération de la valeur du type de tri
+  dropDown.addEventListener('click', (e) => {
+    recoveryValue(e);
+  });
+  // Récupération de la valeur du type de tri avec la touche 'Enter'
+  dropDown.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      recoveryValue(e);
+    }
+  });
 }
