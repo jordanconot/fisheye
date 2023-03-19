@@ -537,4 +537,13 @@
 dialog::backdrop {
     background: rgba(196, 196, 196, 0.4);
  }
+
+ @media (max-width : 1500px) {
+    .photographer_header_btn {
+        margin-right: 0;
+    }
+    .modal {
+        translate: -50% -50%;
+    }
+ }
  
