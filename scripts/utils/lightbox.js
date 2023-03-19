@@ -99,22 +99,33 @@ function displayLightBox(data, clickedIndex) {
   const leftArrow = document.querySelector('.lightbox_left_arrow');
   leftArrow.addEventListener('click', previousImage);
 
-  if (
-    rightArrow.addEventListener('keydown', (e) => {
-      if (e.key === 'rigthArrow') {
-        nextImage();
-      }
-    })
-  ) {
-    if (
-      leftArrow.addEventListener('keydown', (e) => {
-        if (e.key === 'leftArrow') {
-          previousImage();
-        }
-      })
-    ) lightBox.showModal();
-  }
+  // Navigation avec les flèches
+  const imgInLightbox = document.querySelector('.lightbox_img_container');
+  imgInLightbox.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') {
+      nextImage();
+    }
+    if (e.key === 'ArrowLeft') {
+      previousImage();
+    }
+  });
+  //
+  // if (
+  //   rightArrow.addEventListener('keydown', (e) => {
+  //     if (e.key === 'rigthArrow') {
+  //       nextImage();
+  //     }
+  //   })
+  // ) {
+  //   if (
+  //     leftArrow.addEventListener('keydown', (e) => {
+  //       if (e.key === 'leftArrow') {
+  //         previousImage();
+  //       }
+  //     })
+  //   ) lightBox.showModal();
 }
+
 // Je souhaite fermer la lightbox au click sur la croix et enlever l'opacité
 function closeLightBox() {
   const mainOpacity = document.getElementById('main_photographer');
