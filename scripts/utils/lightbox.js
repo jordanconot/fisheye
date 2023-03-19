@@ -109,21 +109,6 @@ function displayLightBox(data, clickedIndex) {
       previousImage();
     }
   });
-  //
-  // if (
-  //   rightArrow.addEventListener('keydown', (e) => {
-  //     if (e.key === 'rigthArrow') {
-  //       nextImage();
-  //     }
-  //   })
-  // ) {
-  //   if (
-  //     leftArrow.addEventListener('keydown', (e) => {
-  //       if (e.key === 'leftArrow') {
-  //         previousImage();
-  //       }
-  //     })
-  //   ) lightBox.showModal();
 }
 
 // Je souhaite fermer la lightbox au click sur la croix et enlever l'opacité
