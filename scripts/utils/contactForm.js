@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 const main = document.getElementById('main_photographer');
 const modal = document.getElementById('modal');
