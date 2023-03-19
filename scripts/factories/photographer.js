@@ -76,7 +76,6 @@ function photographerFactory(data) {
                         <img src='assets/photographers/${portrait}' alt='photographie de ${name}'/>
                     </div>
                 `;
-
     return photographerHeaderContainer;
   }
   return {
@@ -112,7 +111,7 @@ function mediaFactory(data) {
         <h2>${title}</h2>
         <div class="photographer_article_like">
             <span class="likes" aria-label="Nombre de personne qui ont aimé la publication" tabindex="0">${likes}</span>
-            <button class="photographer_article_like_icon"  data-increment='false' aria-label='Bouton pour liker la publication nommée ${title}'>
+            <button class="photographer_article_like_icon" data-increment='false' aria-label='Bouton pour liker la publication nommée ${title}'>
                 <i class="fa-solid fa-heart fa-like fa-xl count"></i>
             </button>
         </div>

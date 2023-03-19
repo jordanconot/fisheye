@@ -21,7 +21,7 @@ function displayModal(photographerId) {
                 <input class="input" type="text" name="lastName" id="lastName" tabindex='0' aria-errormessage='errorLastName' aria-invalid='false' required>
                     <span class="errorLastName" id="errorLastName" aria-live='polite' role='alert'></span>
             <label for="email" aria-input-field-name="Email">Email</label>
-                <input  class="input" type="email" name="email" id="email" tabindex='0' aria-errormessage='errorEmail' aria-invalid='false'>
+                <input  class="input" type="email" name="email" id="email" tabindex='0' aria-errormessage='errorEmail' aria-invalid='false' required>
                     <span class="errorEmail" id="errorEmail" aria-live='polite' role='alert'></span>
                         <div class="modal_comment">
             <label for="message" aria-input-field-name="Message">Votre message</label>

@@ -9,13 +9,13 @@ function displayLightBox(data, clickedIndex) {
   } = data[index];
   let lightBoxElement = ` 
     <div class='lightbox_container'>
-        <button class='lightbox_btn_close' onclick="closeLightBox()" aria-label="Bouton pour fermer la vue rapprochée" tabindex="-1">
+        <button class='lightbox_btn_close' onclick="closeLightBox()" aria-label="fermer la vue rapprochée" tabindex="0">
             <i class='fa-solid fa-xmark fa-3x' class="lightbox_close"></i>
         </button>
-            <button class='lightbox_left_arrow' aria-label='Bouton pour passer à la photo précédente' tabindex='0'>
+            <button class='lightbox_left_arrow' aria-label='passer à la photo précédente' tabindex='0'>
                 <i class='fa-solid fa-chevron-left fa-3x'></i>
             </button>
-                <button class='lightbox_right_arrow' aria-label='Bouton pour passer à la photo suivante'>
+                <button class='lightbox_right_arrow' aria-label='passer à la photo suivante'>
                     <i class='fa-solid fa-chevron-right fa-3x'></i>
                  </button>
                     <div class='lightbox_img' role='dialog' aria-label="Image ouverte en vue rapprochée">
