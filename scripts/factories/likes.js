@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 // Fonction pour gérer les likes avec une boucle sur tous les boutons,
 // on gére l'événement au click en controlant si les boutons
 // sont par défault en data-incrément 'false' on incrémente

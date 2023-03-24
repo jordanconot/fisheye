@@ -1,7 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 const dropDown = document.querySelector('.dropdown');
 const headerDropDown = document.querySelector('.header_dropdown');
 const arrow = document.querySelector('.arrow');
@@ -79,7 +75,7 @@ function sort(media) {
 
   // Tri avec la valeur du type de tri récupérée
   function typeSort(value) {
-    const photographerMediaArticle = media.filter((findMedia) => findMedia.photographerId == nphotographerId);
+    const photographerMediaArticle = media.filter((findMedia) => findMedia.photographerId === parseInt(nphotographerId, 10));
 
     if (value === 'popularity') {
       photographerMediaArticle.sort((a, b) => (a.likes > b.likes ? -1 : 1));

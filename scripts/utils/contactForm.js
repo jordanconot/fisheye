@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 const main = document.getElementById('main_photographer');
 const modal = document.getElementById('modal');
 
@@ -32,7 +30,9 @@ function displayModal(photographerId) {
         <button class="btn_modal modal_submit" type="submit">Envoyer</button>
      </form>
     `;
-    // Affichage de la modal avec la méthode showModal de dialog et mise en place d'une opacity pour ce qui n'est pas dans la modal
+
+  // Affichage de la modal avec la méthode showModal de dialog
+  // et mise en place d'une opacity pour ce qui n'est pas dans la modal
   modal.innerHTML = modalElement;
   modal.showModal();
   main.classList.add('main_photographer');
@@ -40,6 +40,7 @@ function displayModal(photographerId) {
   modal.setAttribute('aria-hidden', false);
   modal.setAttribute('aria-modal', true);
 }
+
 // Fermeture de la modal avec la méthode close de dialog et remove de l'opacity
 function closeModal() {
   modal.close();
@@ -48,6 +49,7 @@ function closeModal() {
   modal.setAttribute('aria-modal', false);
   main.setAttribute('aria-hidden', false);
 }
+
 // Pour la touche échap du clavier
 modal.addEventListener('keydown', (e) => {
   if (e.code === 'Escape') {

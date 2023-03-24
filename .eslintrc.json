@@ -10,5 +10,10 @@
         "ecmaVersion": "latest"
     },
     "rules": {
+        "no-unused-vars": "off",
+        "no-undef" :"off",
+        "max-len" : ["error", {"code": 210 }],
+        "no-plusplus" :"off",
+        "no-console" :"off"
     }
 }

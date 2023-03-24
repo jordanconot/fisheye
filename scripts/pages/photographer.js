@@ -1,7 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-undef */
-/* eslint-disable eqeqeq */
-/* eslint-disable no-console */
 const url = window.location.search;
 const nphotographerId = url.slice(1);
 
@@ -23,14 +19,14 @@ async function displayPhotographer(medias, photographers) {
   // Header photographer
   const photographerHeader = document.querySelector('.photograph_header');
 
-  const photographerId = photographers.find((findIdPhotographer) => findIdPhotographer.id == nphotographerId);
+  const photographerId = photographers.find((findIdPhotographer) => findIdPhotographer.id === parseInt(nphotographerId, 10));
 
   const photographerModelHeader = photographerFactory(photographerId);
 
   const photographerPortrait = photographerModelHeader.getPhotographerHeader();
   photographerHeader.appendChild(photographerPortrait);
 
-  // ----------------------------Open modal onclick and control fields-----------------------------------
+  // ------------Open modal onclick and control fields-------------------------
 
   const btnContact = document.querySelector('.btn');
 
@@ -107,7 +103,7 @@ async function displayPhotographer(medias, photographers) {
         const main = document.getElementById('main_photographer');
         const modal = document.getElementById('modal');
         btnSubmiteKeyEnter.addEventListener('keydown', (e) => {
-          if (e.code == 'Enter') {
+          if (e.code === 'Enter') {
             e.preventDefault();
             modal.close();
             main.classList.remove('main_photographer');
@@ -136,10 +132,10 @@ async function displayPhotographer(medias, photographers) {
       }
     });
   });
-  // -------------------------------------------END MODAL------------------------------------------------------------
+  // ---------------------END MODAL-----------------------------------
 
   // Photos photographer
-  const photographerMediaArticle = medias.filter((findMedia) => findMedia.photographerId == nphotographerId);
+  const photographerMediaArticle = medias.filter((findMedia) => findMedia.photographerId === parseInt(nphotographerId, 10));
 
   const photographersMediaContainer = document.querySelector('.photographer_media');
 
@@ -151,7 +147,7 @@ async function displayPhotographer(medias, photographers) {
     photographersMediaContainer.appendChild(PhotographerMediaContainerUser);
   });
 
-  // -------------------------------------------LIKES--------------------------------------------------------------------
+  // --------------------------------LIKES---------------------------------------------------
 
   const photographerLikeAndPrice = document.querySelector('.photographer_nav_container');
   let like = 0;

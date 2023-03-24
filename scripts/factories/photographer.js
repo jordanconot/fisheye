@@ -1,9 +1,13 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 // Factory for Home page
 function photographerFactory(data) {
   const {
-    name, portrait, city, country, tagline, price, id,
+    name,
+    portrait,
+    city,
+    country,
+    tagline,
+    price,
+    id,
   } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -80,14 +84,27 @@ function photographerFactory(data) {
     return photographerHeaderContainer;
   }
   return {
-    name, id, city, country, tagline, price, portrait, picture, getUserCardDOM, getPhotographerHeader,
+    name,
+    id,
+    city,
+    country,
+    tagline,
+    price,
+    portrait,
+    picture,
+    getUserCardDOM,
+    getPhotographerHeader,
   };
 }
 
 // Factory to manage media
 function mediaFactory(data) {
   const {
-    photographerId, title, image, likes, video,
+    photographerId,
+    title,
+    image,
+    likes,
+    video,
   } = data;
 
   const Image = `<img class='photographer_media_img' src="./assets/images/${photographerId}/${image}" alt='photogaphie représentant ${title}' tabindex='0' aria-label="Ouverture en vue raprochée de l'image"/>`;
@@ -123,11 +140,16 @@ function mediaFactory(data) {
   }
 
   return {
-    photographerId, title, image, likes, video, getMediaFactory,
+    photographerId,
+    title,
+    image,
+    likes,
+    video,
+    getMediaFactory,
   };
 }
 
-// ----------------------------------------Like and price box at bottom of page--------------------------------------
+// ---------------------Like and price box at bottom of page--------------------------------------
 
 function likeAndPriceFactory(data) {
   const { price, likes } = data;

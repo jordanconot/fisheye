@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
 async function getPhotographers() {
   // mais il sera à remplacer avec une requête sur le fichier JSON en utilisant "fetch".
   const photographersAPI = await fetch('./data/photographers.json')
@@ -10,7 +8,9 @@ async function getPhotographers() {
       // et bien retourner le tableau photographers seulement une fois récupéré
       return { photographers, media };
     })
-    .catch((err) => console.log('error:', err));
+    .catch((err) => {
+      throw new Error('error:', err);
+    });
   return photographersAPI;
 }
 
