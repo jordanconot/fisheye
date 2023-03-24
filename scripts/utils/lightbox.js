@@ -1,5 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
 function displayLightBox(data, clickedIndex) {
   let index = clickedIndex;
   const lightBox = document.querySelector('.lightbox');
