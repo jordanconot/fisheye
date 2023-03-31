@@ -271,6 +271,7 @@
     filter: drop-shadow(-5px 10px 30px rgba(0, 0, 0, 0.25));
     color: #DB8876;
     animation: modalOpen 0.5s ease-in-out;
+    overflow: hidden;
 }
 
 .modal_form {
