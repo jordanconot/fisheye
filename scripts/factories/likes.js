@@ -13,13 +13,15 @@ function incrementLikes() {
     likeButtons[i].addEventListener('click', () => {
       if (likeButtons[i].getAttribute('data-increment') === 'false') {
         likeCounts[i].textContent++;
-        likeCounts[i].style.color = '#DB8876';
+        likeCounts[i].style.color = '#911C1C';
+        likeCounts[i].classList.add('isliked');
         likeButtons[i].style.color = '#DB8876';
         likeTotal.textContent++;
         likeButtons[i].setAttribute('data-increment', 'true');
       } else {
         likeCounts[i].textContent--;
         likeCounts[i].style.color = 'black';
+        likeCounts[i].classList.remove('isliked');
         likeButtons[i].style.color = '#901C1C';
         likeTotal.textContent--;
         likeButtons[i].setAttribute('data-increment', 'false');

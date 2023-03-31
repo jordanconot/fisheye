@@ -52,7 +52,7 @@
 }
 
 .photographer_header_id p {
-    color: #901C1C;
+    color: #911C1C;
     font-family: 'DM Sans';
     font-style: normal;
     font-weight: 400;
@@ -91,7 +91,7 @@
     min-width: 170px;
     height: 69px;
     border: none;
-    background-color: #901C1C;
+    background-color: #911C1C;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 50px;
@@ -141,7 +141,7 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    color: #901c1c;
+    color: #911c1c;
     font-size: 20px;
     padding-top: 10px;
     justify-content: space-between;
@@ -163,16 +163,25 @@
 }
 
 .photographer_article_like_icon i {
-    color: #901C1C;
+    color: #911C1C;
 }
 
 .likes {
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 22px;
     line-height: 19px;
     color: #000000;
+}
+
+.isliked {
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 31px;
+    color: #911C1C;
 }
 
 .count:hover {
@@ -238,7 +247,7 @@
     min-width: 170px;
     height: 69px;
     border: none;
-    background-color: #901C1C;
+    background-color: #911C1C;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -246,11 +255,13 @@
 .btn_modal:hover {
     background-color: #d3573c;
 }
+
 @keyframes modalOpen {
     0% {
         opacity: 0;
         transform: translateY(-150px);
     }
+
     100% {
         opacity: 1;
     }
@@ -381,7 +392,7 @@
     top: 25px;
     aspect-ratio: 1/1;
     height: 35px;
-    color: #901C1C;
+    color: #911C1C;
     border: none;
     background: none;
     cursor: pointer;
@@ -393,7 +404,7 @@
     left: 25px;
     aspect-ratio: 1/1;
     height: 35px;
-    color: #901C1C;
+    color: #911C1C;
     border: none;
     background: none;
     cursor: pointer;
@@ -405,7 +416,7 @@
     right: 25px;
     aspect-ratio: 1/1;
     height: 35px;
-    color: #901C1C;
+    color: #911C1C;
     border: none;
     background: none;
     cursor: pointer;
@@ -442,7 +453,7 @@
     position: absolute;
     bottom: -50px;
     left: 160px;
-    color: #901C1C;
+    color: #911C1C;
     font-size: 24px;
     font-weight: 600;
     line-height: 31px;
@@ -466,7 +477,7 @@
     position: relative;
 }
 
-.header_dropdown{
+.header_dropdown {
     cursor: pointer;
     box-sizing: border-box;
     width: 170px;
@@ -475,7 +486,7 @@
     font-weight: 700;
     text-align: left;
     vertical-align: top;
-    background-color: #901c1c;
+    background-color: #911c1c;
     color: white;
     border: none;
     padding: 0px 0px 9px 15px;
@@ -503,48 +514,49 @@
     flex-direction: column;
     padding: 20px 15px 0px;
     cursor: pointer;
-    background-color: #901c1c;
+    background-color: #911c1c;
     color: white;
-    transition:  0.3s ease;
+    transition: 0.3s ease;
 }
+
 .item:nth-child(1)::after,
 .item:nth-child(2)::after {
-  content: "";
-  padding-bottom: 16px;
-  width: 135px;
-  border-bottom: white 1px solid;
+    content: "";
+    padding-bottom: 16px;
+    width: 135px;
+    border-bottom: white 1px solid;
 }
 
 .header_dropdown:hover,
 .item:hover {
-  background: #db8876;
+    background: #db8876;
 }
 
 .header_dropdown:focus,
 .item:focus {
-  background: #db8876;
-  outline: green solid 0px;
+    background: #db8876;
+    outline: green solid 0px;
 }
 
 .arrow {
-  z-index: 2;
-  font-size: 1em;
-  color: white;
-  position: absolute;
-  top: 23px;
-  right: 20px;
+    z-index: 2;
+    font-size: 1em;
+    color: white;
+    position: absolute;
+    top: 23px;
+    right: 20px;
 }
 
 dialog::backdrop {
     background: rgba(196, 196, 196, 0.4);
- }
+}
 
- @media (max-width : 1500px) {
+@media (max-width : 1500px) {
     .photographer_header_btn {
         margin-right: 0;
     }
+
     .modal {
         translate: -50% -50%;
     }
- }
- 
+}
