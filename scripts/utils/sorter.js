@@ -40,10 +40,8 @@ function focusTab(e, focusables) {
   let index = focusables.findIndex((searchFocus) => searchFocus === document.querySelector(':focus'));
   // Décrémentation de l'index à la touche shift
   if (e.shiftKey) {
-    // eslint-disable-next-line no-plusplus
     index--;
   } else {
-    // eslint-disable-next-line no-plusplus
     index++; // incrémentation
   }
   // Si index supérieur à la longueur du tableau, on revient au début
