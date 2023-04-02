@@ -70,7 +70,7 @@ async function displayPhotographer(medias, photographers) {
       const errorEmail = document.getElementById('errorEmail');
       const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,20}$/;
       if (emailRegex.test(email.value) === false) {
-        errorEmail.textContent = 'Format incorrect';
+        errorEmail.textContent = 'Format incorrect pour le e-mail';
         errorEmail.style.color = '#ffe7e1';
         email.setAttribute('aria-invalid', 'true');
         return false;
