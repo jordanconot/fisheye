@@ -11,19 +11,18 @@ function displayModal(photographerId) {
             </div>
             <img src="assets/icons/close.svg" onclick="closeModal()" class="modal_close"  role="button" aria-label="fermer la modal"/>
         </header>
-
         <form class="modal_form">
-            <label for="firstName" id="firstname" aria-input-field-name="Prénom">Prénom</label>
+            <label for="firstName" id="firstname">Prénom</label>
                 <input class="input" id="firstName" type="text" name="firstname" tabindex='0' aria-errormessage='errorFirstName' aria-invalid='false' required/>
                     <span id="errorFirstName" class="firstNameError" aria-live='polite' role='alert'></span>
-            <label for="lastName" aria-input-field-name="Nom">Nom</label>
+            <label for="lastName">Nom</label>
                 <input class="input" type="text" name="lastName" id="lastName" tabindex='0' aria-errormessage='errorLastName' aria-invalid='false' required>
                     <span class="errorLastName" id="errorLastName" aria-live='polite' role='alert'></span>
-            <label for="email" aria-input-field-name="Email">Email</label>
+            <label for="email">Email</label>
                 <input  class="input" type="email" name="email" id="email" tabindex='0' aria-errormessage='errorEmail' aria-invalid='false' required>
                     <span class="errorEmail" id="errorEmail" aria-live='polite' role='alert'></span>
                         <div class="modal_comment">
-            <label for="message" aria-input-field-name="Message">Votre message</label>
+            <label for="message">Votre message</label>
                 <textarea type="text" name="message" id="message" class="modal_message input" tabindex='0'></textarea>
             </div>
             

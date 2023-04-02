@@ -84,11 +84,13 @@ function sort(media) {
     if (value === 'title') {
       photographerMediaArticle.sort((a, b) => (a.title > b.title ? 1 : -1));
     }
+
     // Effacement de la galerie avant le nouvel affichage
     const removeMedias = Array.from(document.querySelector('.photographer_media').children);
     removeMedias.forEach((item) => {
       item.remove();
     });
+
     // Affichage de la galerie suivant le type de tri sélectioné
     const photographersMediaContainer = document.querySelector('.photographer_media');
 
@@ -99,6 +101,8 @@ function sort(media) {
 
       photographersMediaContainer.appendChild(PhotographerMediaContainerUser);
     });
+
+    // Affichage de la lightbox au clique sur une image
     const photographerImg = document.getElementsByClassName('photographer_media_img');
     Array.from(photographerImg).forEach((item) => {
       item.addEventListener('click', (e) => {
@@ -106,6 +110,8 @@ function sort(media) {
         displayLightBox(photographerMediaArticle, clickedIndex);
       });
     });
+
+    // Affichage de la lightbox avec la touche "Entrer" sur une image
     const photographerImgKey = document.getElementsByClassName('photographer_media_img');
     Array.from(photographerImgKey).forEach((item) => {
       item.addEventListener('keydown', (e) => {
