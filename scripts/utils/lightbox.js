@@ -98,7 +98,7 @@ function displayLightBox(data, clickedIndex) {
   leftArrow.addEventListener('click', previousImage);
 
   // Navigation avec les flèches
-  const imgInLightbox = document.querySelector('.lightbox_img_container');
+  const imgInLightbox = document.querySelector('.lightbox_img_container_img');
   imgInLightbox.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') {
       nextImage();

@@ -530,7 +530,11 @@
     right: 20px;
 }
 
-dialog::backdrop {
+#modal::backdrop {
+    background: #f5f5f5b0;
+}
+
+.lightbox::backdrop {
     background: white;
 }
 
