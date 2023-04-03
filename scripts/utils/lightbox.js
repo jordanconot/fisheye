@@ -7,10 +7,10 @@ function displayLightBox(data, clickedIndex) {
   } = data[index];
   let lightBoxElement = ` 
     <div class='lightbox_container'>
-        <button class='lightbox_btn_close' onclick="closeLightBox()" aria-label="fermer la vue rapprochée" tabindex="0">
+        <button class='lightbox_btn_close' onclick="closeLightBox()" aria-label="fermer la vue rapprochée">
             <i class='fa-solid fa-xmark fa-3x' class="lightbox_close"></i>
         </button>
-            <button class='lightbox_left_arrow' aria-label='passer à la photo précédente' tabindex='0'>
+            <button class='lightbox_left_arrow' aria-label='passer à la photo précédente'>
                 <i class='fa-solid fa-chevron-left fa-3x'></i>
             </button>
                 <button class='lightbox_right_arrow' aria-label='passer à la photo suivante'>
@@ -97,9 +97,8 @@ function displayLightBox(data, clickedIndex) {
   const leftArrow = document.querySelector('.lightbox_left_arrow');
   leftArrow.addEventListener('click', previousImage);
 
-  // Navigation avec les flèches
-  const imgInLightbox = document.querySelector('.lightbox_img_container_img');
-  imgInLightbox.addEventListener('keydown', (e) => {
+  // Navigation avec les flèches lorsque la modal est ouverte
+  document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') {
       nextImage();
     }

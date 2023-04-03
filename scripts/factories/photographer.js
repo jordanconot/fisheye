@@ -107,8 +107,8 @@ function mediaFactory(data) {
     video,
   } = data;
 
-  const Image = `<img class='photographer_media_img' src="./assets/images/${photographerId}/${image}" alt='photogaphie représentant ${title}' tabindex='0' aria-label="Ouverture en vue raprochée de l'image"/>`;
-  const Video = `<video controls class='photographer_media_img'  aria-label="Ouverture en vue raprochée de la vidéo"><source src="./assets/images/${photographerId}/${video}" type="video/mp4"></video>`;
+  const Image = `<img class='photographer_media_img' src="./assets/images/${photographerId}/${image}" alt='photogaphie représentant ${title}' tabindex='0'/>`;
+  const Video = `<video controls class='photographer_media_img'><source src="./assets/images/${photographerId}/${video}" type="video/mp4"></video>`;
 
   let mediaStyle;
   if (!image) {
@@ -128,8 +128,8 @@ function mediaFactory(data) {
         <div class="photographer_media_article_text">
         <h2>${title}</h2>
         <div class="photographer_article_like">
-            <span class="likes" aria-label="Nombre de personne qui ont aimé la publication" tabindex="0">${likes}</span>
-            <button class="photographer_article_like_icon" data-increment='false' aria-label='Bouton pour liker la publication nommée ${title}'>
+            <span class="likes" tabindex="-1">${likes}</span>
+            <button class="photographer_article_like_icon" data-increment='false' aria-label='${likes} personne ont aimé la photographie, bouton pour aimé la photographie nommée ${title}'>
                 <i class="fa-solid fa-heart fa-like fa-xl count"></i>
             </button>
         </div>
